@@ -1,0 +1,51 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package vista;
+
+/**
+ *
+ * @author Estudiante
+ */
+public class Usuario {
+  private int codigo;
+  private String username;
+  private String contrasena;
+
+    public Usuario() {
+    }
+
+    public Usuario(int codigo, String username, String contrasena) {
+        this.codigo = codigo;
+        this.username = username;
+        this.contrasena = contrasena;
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+  
+  
+}
