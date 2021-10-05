@@ -1,51 +1,40 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vista;
 
-/**
- *
- * @author Estudiante
- */
 public class Usuario {
-  private int codigo;
-  private String username;
-  private String contrasena;
+	private int atrCodigo;
+	private String atrUsername;
+	private String atrPassword;
 
-    public Usuario() {
-    }
+	public Usuario() {
+	}
 
-    public Usuario(int codigo, String username, String contrasena) {
-        this.codigo = codigo;
-        this.username = username;
-        this.contrasena = contrasena;
-    }
+	public Usuario(int prmCodigo, String prmUsername, String prmPassword) {
+		this.atrCodigo = prmCodigo;
+		this.atrUsername = prmUsername;
+		this.atrPassword = prmPassword;
+	}
 
-    public int getCodigo() {
-        return codigo;
-    }
+	public int getCodigo() {
+		return atrCodigo;
+	}
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
+	public void setCodigo(int prmCodigo) {
+		this.atrCodigo = prmCodigo;
+	}
 
-    public String getUsername() {
-        return username;
-    }
+	public String getUsername() {
+		return atrUsername;
+	}
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+	public void setUsername(String prmUsername) {
+		this.atrUsername = prmUsername;
+	}
 
-    public String getContrasena() {
-        return contrasena;
-    }
+	public String getPassword() {
+		return atrPassword;
+	}
 
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
-  
-  
+	public void setPassword(String prmPassword) {
+		this.atrPassword = prmPassword;
+	}
 }
