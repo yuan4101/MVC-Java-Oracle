@@ -16,11 +16,7 @@ public class Database {
 	public void connect() {
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
-
-			// Usuario por defecto de la base de datos: usuario(0, 'admin', 'AnteDatabase')
-			varConnection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "hojaDeVida",
-					"AnteDatabase");
-
+			varConnection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "hojaDeVida", "AnteDatabase");
 			System.out.println("Se conecto a la base de datos correctamente");
 		} catch (Exception e) {
 			System.out.println("No se pudo conectar la base de datos " + e.getMessage());
