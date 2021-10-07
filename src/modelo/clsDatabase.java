@@ -6,26 +6,26 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.DriverManager;
 
-public class Database {
+public class clsDatabase extends clsMensajero{
+	
 	Connection varConnection = null;
+	String varMensaje = null;
 
-	public Database() {
-		connect();
-	}
-
-	public void connect() {
+	public Boolean connect(String prmUser, String prmPassword) {
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
-			varConnection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "hojaDeVida", "AnteDatabase");
-			System.out.println("Se conecto a la base de datos correctamente");
+			varConnection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", prmUser, prmPassword);
+			atrMensaje = "Se conecto a la base de datos correctamente - " + varConnection.getSchema();
+			return true;
 		} catch (Exception e) {
-			System.out.println("No se pudo conectar la base de datos " + e.getMessage());
+			atrMensaje = "ERROR: " + e.getMessage();
+			return false;
 		}
 	}
 
 	public void closedConnection() throws SQLException {
 		varConnection.close();
-		System.out.println("Se cerro la conexion");
+		atrMensaje = "Se cerro la conexion";
 	}
 
 	public ResultSet query(String prmSql) {
@@ -37,7 +37,7 @@ public class Database {
 				return varResultado;
 			}
 		} catch (Exception e) {
-			System.out.println("ERROR: " + e.getMessage());
+			atrMensaje = "ERROR: " + e.getMessage();
 		}
 		return null;
 	}
@@ -51,7 +51,7 @@ public class Database {
 				return varResultado;
 			}
 		} catch (Exception e) {
-			System.out.println("ERROR: " + e.getMessage());
+			atrMensaje = "ERROR: " + e.getMessage();
 		}
 		return 0;
 	}
