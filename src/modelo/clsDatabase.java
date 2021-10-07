@@ -4,12 +4,14 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import Access.clsMensajero;
+
 import java.sql.DriverManager;
 
 public class clsDatabase extends clsMensajero{
 	
-	Connection varConnection = null;
-	String varMensaje = null;
+	public Connection varConnection = null;
 
 	public Boolean connect(String prmUser, String prmPassword) {
 		try {
