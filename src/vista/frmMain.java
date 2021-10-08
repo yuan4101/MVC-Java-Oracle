@@ -80,10 +80,10 @@ public class frmMain extends clsMensajero{
 		
 		// JLabel
 		JLabel lblStatusCRUD = new JLabel("No conectado a la base de datos");
-		JLabel lblStatusQuery1 = new JLabel("No conectado a la base de datos");
-		JLabel lblStatusQuery2 = new JLabel("No conectado a la base de datos");
-		JLabel lblStatusQuery3 = new JLabel("No conectado a la base de datos");
-		JLabel lblStatusQuery4 = new JLabel("No conectado a la base de datos");
+		JLabel lblConsulta1 = new JLabel("No conectado a la base de datos");
+		JLabel lblConsulta2 = new JLabel("No conectado a la base de datos");
+		JLabel lblConsulta3 = new JLabel("No conectado a la base de datos");
+		JLabel lblConsulta4 = new JLabel("No conectado a la base de datos");
 		JLabel lblUsuario = new JLabel("Usuario");
 		JLabel lblPassword = new JLabel("Contrase\u00F1a");
 
@@ -154,14 +154,14 @@ public class frmMain extends clsMensajero{
 			gl_panConsulta1.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panConsulta1.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(lblStatusQuery1, GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
+					.addComponent(lblConsulta1, GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
 					.addGap(702))
 		);
 		gl_panConsulta1.setVerticalGroup(
 			gl_panConsulta1.createParallelGroup(Alignment.LEADING)
 				.addGroup(Alignment.TRAILING, gl_panConsulta1.createSequentialGroup()
 					.addContainerGap(381, Short.MAX_VALUE)
-					.addComponent(lblStatusQuery1)
+					.addComponent(lblConsulta1)
 					.addContainerGap())
 		);
 		panConsulta1.setLayout(gl_panConsulta1);
@@ -172,14 +172,14 @@ public class frmMain extends clsMensajero{
 			gl_panConsulta2.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panConsulta2.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(lblStatusQuery2, GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+					.addComponent(lblConsulta2, GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
 					.addGap(702))
 		);
 		gl_panConsulta2.setVerticalGroup(
 			gl_panConsulta2.createParallelGroup(Alignment.LEADING)
 				.addGroup(Alignment.TRAILING, gl_panConsulta2.createSequentialGroup()
 					.addContainerGap(381, Short.MAX_VALUE)
-					.addComponent(lblStatusQuery2)
+					.addComponent(lblConsulta2)
 					.addContainerGap())
 		);
 		panConsulta2.setLayout(gl_panConsulta2);
@@ -190,14 +190,14 @@ public class frmMain extends clsMensajero{
 			gl_panConsulta3.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panConsulta3.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(lblStatusQuery3, GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+					.addComponent(lblConsulta3, GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
 					.addGap(702))
 		);
 		gl_panConsulta3.setVerticalGroup(
 			gl_panConsulta3.createParallelGroup(Alignment.LEADING)
 				.addGroup(Alignment.TRAILING, gl_panConsulta3.createSequentialGroup()
 					.addContainerGap(381, Short.MAX_VALUE)
-					.addComponent(lblStatusQuery3)
+					.addComponent(lblConsulta3)
 					.addContainerGap())
 		);
 		panConsulta3.setLayout(gl_panConsulta3);
@@ -208,14 +208,14 @@ public class frmMain extends clsMensajero{
 			gl_panConsulta4.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panConsulta4.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(lblStatusQuery4, GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+					.addComponent(lblConsulta4, GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
 					.addGap(702))
 		);
 		gl_panConsulta4.setVerticalGroup(
 			gl_panConsulta4.createParallelGroup(Alignment.LEADING)
 				.addGroup(Alignment.TRAILING, gl_panConsulta4.createSequentialGroup()
 					.addContainerGap(381, Short.MAX_VALUE)
-					.addComponent(lblStatusQuery4)
+					.addComponent(lblConsulta4)
 					.addContainerGap())
 		);
 		panConsulta4.setLayout(gl_panConsulta4);
@@ -255,7 +255,7 @@ public class frmMain extends clsMensajero{
 					varConexionExitosa = clsMensajero.darMensaje();
 				}
 				lblStatusCRUD.setText(clsMensajero.darMensaje());
-				lblStatusQuery1.setText(clsMensajero.darMensaje());
+				lblConsulta1.setText(clsMensajero.darMensaje());
 			}
 		});
 	}
