@@ -1,10 +1,10 @@
 package modelo;
 
-public class PaisModel {
+public class Pais {
 	private int PAI_CODIGO;
 	private String PAI_NOMBRE;
 	
-	public PaisModel(int pAI_CODIGO, String pAI_NOMBRE) {
+	public Pais(int pAI_CODIGO, String pAI_NOMBRE) {
 		super();
 		PAI_CODIGO = pAI_CODIGO;
 		PAI_NOMBRE = pAI_NOMBRE;
