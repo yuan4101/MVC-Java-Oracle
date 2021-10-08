@@ -15,8 +15,10 @@ import javax.swing.JButton;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
+import Access.clsConnection;
 import Access.clsMensajero;
-import modelo.clsDatabase;
+
 import javax.swing.JComboBox;
 import javax.swing.JTextArea;
 import javax.swing.DefaultComboBoxModel;
@@ -36,7 +38,7 @@ public class frmMain extends clsMensajero{
 	private JFrame frmMain;
 	private JTextField txfUsuario;
 	private JPasswordField txfPassword;
-	clsDatabase varDatabase = new clsDatabase();
+	clsConnection varDatabase = new clsConnection();
 	private String varTexto = "";
 	private String varConexionExitosa;
 	private JTextField txtfCRUD;
@@ -82,11 +84,11 @@ public class frmMain extends clsMensajero{
 		
 		// JLabel
 		JLabel lblStatusCRUD = new JLabel("No conectado a la base de datos");
-		JLabel lblStatusConsulta3 = new JLabel("No conectado a la base de datos");
 		JLabel lblStatusConsulta4 = new JLabel("No conectado a la base de datos");
 		JLabel lblUsuario = new JLabel("Usuario");
 		JLabel lblPassword = new JLabel("Contrase\u00F1a");
 		JLabel lblOpcion = new JLabel("Opcion");
+		lblOpcion.setEnabled(false);
 
 		// tabbedPane
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
@@ -119,17 +121,21 @@ public class frmMain extends clsMensajero{
 				panConsulta1.setBackground(SystemColor.inactiveCaption);
 				tabbedPane.addTab("Consulta 1", null, panConsulta1, null);
 				
-				JLabel lblConsulta1_1 = new JLabel("Mostrar el nombre de los departamentos de Colombia");
+				JLabel lblConsulta1_1 = new JLabel("Mostrar el nombre de los departamentos del pais con codigo 57");
+				lblConsulta1_1.setEnabled(false);
 				lblConsulta1_1.setToolTipText("");
 				
 				JLabel lblConsulta1_2 = new JLabel("Mostrar el codigo y el nombre de los paises con codigo mayor a 55");
+				lblConsulta1_2.setEnabled(false);
 				lblConsulta1_2.setToolTipText("");
 				
 				JButton btnConsulta1_1 = new JButton("Execute");
+				btnConsulta1_1.setEnabled(false);
 				
 				btnConsulta1_1.setBackground(SystemColor.inactiveCaptionBorder);
 				
 				JButton btnConsulta1_2 = new JButton("Execute");
+				btnConsulta1_2.setEnabled(false);
 				
 				btnConsulta1_2.setBackground(SystemColor.inactiveCaptionBorder);
 				
@@ -141,15 +147,13 @@ public class frmMain extends clsMensajero{
 							gl_panConsulta1.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_panConsulta1.createSequentialGroup()
 									.addContainerGap(199, Short.MAX_VALUE)
-									.addGroup(gl_panConsulta1.createParallelGroup(Alignment.LEADING)
-										.addGroup(gl_panConsulta1.createSequentialGroup()
-											.addComponent(lblConsulta1_2)
-											.addGap(18)
-											.addComponent(btnConsulta1_2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-										.addGroup(gl_panConsulta1.createSequentialGroup()
-											.addComponent(lblConsulta1_1)
-											.addPreferredGap(ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
-											.addComponent(btnConsulta1_1)))
+									.addGroup(gl_panConsulta1.createParallelGroup(Alignment.LEADING, false)
+										.addComponent(lblConsulta1_1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(lblConsulta1_2, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+									.addGap(40)
+									.addGroup(gl_panConsulta1.createParallelGroup(Alignment.TRAILING, false)
+										.addComponent(btnConsulta1_2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(btnConsulta1_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 									.addContainerGap(275, Short.MAX_VALUE))
 								.addGroup(gl_panConsulta1.createSequentialGroup()
 									.addGap(139)
@@ -179,6 +183,7 @@ public class frmMain extends clsMensajero{
 						);
 						
 						JTextArea txtaConsulta1 = new JTextArea();
+						txtaConsulta1.setEnabled(false);
 						spConsulta1.setViewportView(txtaConsulta1);
 						txtaConsulta1.setEditable(false);
 						txtaConsulta1.setBackground(new Color(244, 247, 252));
@@ -192,23 +197,29 @@ public class frmMain extends clsMensajero{
 				tabbedPane.addTab("Consulta 2", null, panConsulta2, null);
 				
 				JLabel lblConsulta2_1 = new JLabel("Mostrar el nombre de los departamentos y el nombre de sus municipios");
+				lblConsulta2_1.setEnabled(false);
 				lblConsulta2_1.setToolTipText("");
 				
 				JButton btnConsulta2_1 = new JButton("Execute");
+				btnConsulta2_1.setEnabled(false);
 				
 				btnConsulta2_1.setBackground(SystemColor.inactiveCaptionBorder);
 				
 				JLabel lblConsulta2_2 = new JLabel("Mostrar el nombre de los paises y el nombre de sus departamentos");
+				lblConsulta2_2.setEnabled(false);
 				lblConsulta2_2.setToolTipText("");
 				
 				JButton btnConsulta2_2 = new JButton("Execute");
+				btnConsulta2_2.setEnabled(false);
 				
 				btnConsulta2_2.setBackground(SystemColor.inactiveCaptionBorder);
 				
 				JLabel lblConsulta2_3 = new JLabel("Mostrar todos los paises, nombre de los departamentos y nombre de los municipios respectivamente");
+				lblConsulta2_3.setEnabled(false);
 				lblConsulta2_3.setToolTipText("");
 				
 				JButton btnConsulta2_3 = new JButton("Execute");
+				btnConsulta2_3.setEnabled(false);
 				
 				btnConsulta2_3.setBackground(SystemColor.inactiveCaptionBorder);
 				
@@ -262,15 +273,85 @@ public class frmMain extends clsMensajero{
 				);
 				
 				JTextArea txtaConsulta2 = new JTextArea();
+				txtaConsulta2.setEnabled(false);
 				txtaConsulta2.setEditable(false);
 				txtaConsulta2.setBackground(SystemColor.inactiveCaptionBorder);
 				spConsulta2.setViewportView(txtaConsulta2);
 				panConsulta2.setLayout(gl_panConsulta2);
-
-		// panConsulta3
-		JPanel panConsulta3 = new JPanel();
-		panConsulta3.setBackground(SystemColor.inactiveCaption);
-		tabbedPane.addTab("Consulta 3", null, panConsulta3, null);
+		JLabel lblStatusConsulta3 = new JLabel("No conectado a la base de datos");
+		
+				// panConsulta3
+				JPanel panConsulta3 = new JPanel();
+				panConsulta3.setBackground(SystemColor.inactiveCaption);
+				tabbedPane.addTab("Consulta 3", null, panConsulta3, null);
+				
+				JLabel lblConsulta3_1 = new JLabel("Mostrar el codigo y nombre de los departamentos del pais con nombre \"Colombia\"");
+				lblConsulta3_1.setEnabled(false);
+				lblConsulta3_1.setToolTipText("");
+				
+				JLabel lblConsulta3_2 = new JLabel("Mostrar el nombre de los municipios del departamento con nombre \"Cauca\"");
+				lblConsulta3_2.setEnabled(false);
+				lblConsulta3_2.setToolTipText("");
+				
+				JButton btnConsulta3_1 = new JButton("Execute");
+				btnConsulta3_1.setEnabled(false);
+				
+				btnConsulta3_1.setBackground(SystemColor.inactiveCaptionBorder);
+				
+				JButton btnConsulta3_2 = new JButton("Execute");
+				btnConsulta3_2.setEnabled(false);
+				
+				btnConsulta3_2.setBackground(SystemColor.inactiveCaptionBorder);
+				
+				JScrollPane spConsulta3 = new JScrollPane();
+				
+				//gl_panConsulta3
+				GroupLayout gl_panConsulta3 = new GroupLayout(panConsulta3);
+				gl_panConsulta3.setHorizontalGroup(
+					gl_panConsulta3.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panConsulta3.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(lblStatusConsulta3, GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+							.addGap(702))
+						.addGroup(gl_panConsulta3.createSequentialGroup()
+							.addGap(59)
+							.addGroup(gl_panConsulta3.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(lblConsulta3_2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(lblConsulta3_1, GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE))
+							.addGap(78)
+							.addGroup(gl_panConsulta3.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(btnConsulta3_1, GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+								.addComponent(btnConsulta3_2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+							.addContainerGap(223, Short.MAX_VALUE))
+						.addGroup(gl_panConsulta3.createSequentialGroup()
+							.addGap(125)
+							.addComponent(spConsulta3, GroupLayout.PREFERRED_SIZE, 573, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap(181, Short.MAX_VALUE))
+				);
+				gl_panConsulta3.setVerticalGroup(
+					gl_panConsulta3.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_panConsulta3.createSequentialGroup()
+							.addGap(39)
+							.addGroup(gl_panConsulta3.createParallelGroup(Alignment.BASELINE)
+								.addComponent(btnConsulta3_1)
+								.addComponent(lblConsulta3_1))
+							.addGap(30)
+							.addGroup(gl_panConsulta3.createParallelGroup(Alignment.BASELINE)
+								.addComponent(btnConsulta3_2)
+								.addComponent(lblConsulta3_2))
+							.addGap(18)
+							.addComponent(spConsulta3, GroupLayout.PREFERRED_SIZE, 205, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+							.addComponent(lblStatusConsulta3)
+							.addContainerGap())
+				);
+				
+				JTextArea txtaConsulta3 = new JTextArea();
+				txtaConsulta3.setEnabled(false);
+				txtaConsulta3.setEditable(false);
+				txtaConsulta3.setBackground(SystemColor.inactiveCaptionBorder);
+				spConsulta3.setViewportView(txtaConsulta3);
+				panConsulta3.setLayout(gl_panConsulta3);
 
 		// panConsulta4
 		JPanel panConsulta4 = new JPanel();
@@ -284,6 +365,7 @@ public class frmMain extends clsMensajero{
 		menuBar.add(panMenu);
 		
 		JLabel lblTabla = new JLabel("Tabla");
+		lblTabla.setEnabled(false);
 		
 		JComboBox cbTabla = new JComboBox();
 		cbTabla.setEnabled(false);
@@ -366,23 +448,25 @@ public class frmMain extends clsMensajero{
 		);
 		panCRUD.setLayout(gl_panCRUD);
 		
-		//gl_panConsulta3
-		GroupLayout gl_panConsulta3 = new GroupLayout(panConsulta3);
-		gl_panConsulta3.setHorizontalGroup(
-			gl_panConsulta3.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_panConsulta3.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblStatusConsulta3, GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-					.addGap(702))
-		);
-		gl_panConsulta3.setVerticalGroup(
-			gl_panConsulta3.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panConsulta3.createSequentialGroup()
-					.addContainerGap(381, Short.MAX_VALUE)
-					.addComponent(lblStatusConsulta3)
-					.addContainerGap())
-		);
-		panConsulta3.setLayout(gl_panConsulta3);
+		JLabel lblConsulta4_1 = new JLabel("Agregar columna Direccion a la tabla Universidad");
+		lblConsulta4_1.setEnabled(false);
+		lblConsulta4_1.setToolTipText("");
+		
+		JLabel lblConsulta4_2 = new JLabel("Elimiar la columna Direccion de la tabla Universidad");
+		lblConsulta4_2.setEnabled(false);
+		lblConsulta4_2.setToolTipText("");
+		
+		JButton btnConsulta4_1 = new JButton("Execute");
+		btnConsulta4_1.setEnabled(false);
+		
+		btnConsulta4_1.setBackground(SystemColor.inactiveCaptionBorder);
+		
+		JButton btnConsulta4_2 = new JButton("Execute");
+		btnConsulta4_2.setEnabled(false);
+		
+		btnConsulta4_2.setBackground(SystemColor.inactiveCaptionBorder);
+		
+		JScrollPane spConsulta4 = new JScrollPane();
 		
 		// gl_panConsulta4
 		GroupLayout gl_panConsulta4 = new GroupLayout(panConsulta4);
@@ -392,14 +476,44 @@ public class frmMain extends clsMensajero{
 					.addContainerGap()
 					.addComponent(lblStatusConsulta4, GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
 					.addGap(702))
+				.addGroup(gl_panConsulta4.createSequentialGroup()
+					.addGap(134)
+					.addGroup(gl_panConsulta4.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblConsulta4_1, GroupLayout.PREFERRED_SIZE, 316, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblConsulta4_2, GroupLayout.PREFERRED_SIZE, 316, GroupLayout.PREFERRED_SIZE))
+					.addGap(73)
+					.addGroup(gl_panConsulta4.createParallelGroup(Alignment.TRAILING)
+						.addComponent(btnConsulta4_1, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnConsulta4_2, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(276, Short.MAX_VALUE))
+				.addGroup(gl_panConsulta4.createSequentialGroup()
+					.addGap(119)
+					.addComponent(spConsulta4, GroupLayout.PREFERRED_SIZE, 573, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(187, Short.MAX_VALUE))
 		);
 		gl_panConsulta4.setVerticalGroup(
-			gl_panConsulta4.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_panConsulta4.createSequentialGroup()
-					.addContainerGap(381, Short.MAX_VALUE)
+			gl_panConsulta4.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panConsulta4.createSequentialGroup()
+					.addGap(37)
+					.addGroup(gl_panConsulta4.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblConsulta4_1)
+						.addComponent(btnConsulta4_1))
+					.addGap(36)
+					.addGroup(gl_panConsulta4.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblConsulta4_2)
+						.addComponent(btnConsulta4_2))
+					.addPreferredGap(ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+					.addComponent(spConsulta4, GroupLayout.PREFERRED_SIZE, 205, GroupLayout.PREFERRED_SIZE)
+					.addGap(30)
 					.addComponent(lblStatusConsulta4)
 					.addContainerGap())
 		);
+		
+		JTextArea txtaConsulta4 = new JTextArea();
+		txtaConsulta4.setEnabled(false);
+		txtaConsulta4.setEditable(false);
+		txtaConsulta4.setBackground(SystemColor.inactiveCaptionBorder);
+		spConsulta4.setViewportView(txtaConsulta4);
 		panConsulta4.setLayout(gl_panConsulta4);
 		
 		// gl_panMenu
@@ -435,17 +549,83 @@ public class frmMain extends clsMensajero{
 			public void mouseClicked(MouseEvent e) {
 				if(varDatabase.connect(txfUsuario.getText(), new String(txfPassword.getPassword()))) {
 					varConexionExitosa = clsMensajero.darMensaje();
+					// panCRUD
+					lblTabla.setEnabled(true);
 					cbTabla.setEnabled(true);
+					lblOpcion.setEnabled(true);
 					cbOpcion.setEnabled(true);
+					lblInfoCRUD.setEnabled(true);
 					txtfCRUD.setEnabled(true);
 					btnCRUD.setEnabled(true);
-					lblInfoCRUD.setEnabled(true);
+					
+					// panConsulta1
+					lblConsulta1_1.setEnabled(true);
+					btnConsulta1_1.setEnabled(true);
+					lblConsulta1_2.setEnabled(true);
+					btnConsulta1_2.setEnabled(true);
+					txtaConsulta1.setEnabled(true);
+					
+					// panConsulta2
+					lblConsulta2_1.setEnabled(true);
+					btnConsulta2_1.setEnabled(true);
+					lblConsulta2_2.setEnabled(true);
+					btnConsulta2_2.setEnabled(true);
+					lblConsulta2_3.setEnabled(true);
+					btnConsulta2_3.setEnabled(true);
+					txtaConsulta2.setEnabled(true);
+					
+					// panConsulta3
+					lblConsulta3_1.setEnabled(true);
+					btnConsulta3_1.setEnabled(true);
+					lblConsulta3_2.setEnabled(true);
+					btnConsulta3_2.setEnabled(true);
+					txtaConsulta3.setEnabled(true);
+					
+					// panConsulta4
+					lblConsulta4_1.setEnabled(true);
+					btnConsulta4_1.setEnabled(true);
+					lblConsulta4_2.setEnabled(true);
+					btnConsulta4_2.setEnabled(true);
+					txtaConsulta4.setEnabled(true);
 				} else {
+					// panCRUD
+					lblTabla.setEnabled(false);
 					cbTabla.setEnabled(false);
+					lblOpcion.setEnabled(false);
 					cbOpcion.setEnabled(false);
+					lblInfoCRUD.setEnabled(false);
 					txtfCRUD.setEnabled(false);
 					btnCRUD.setEnabled(false);
-					lblInfoCRUD.setEnabled(false);
+					
+					// panConsulta1
+					lblConsulta1_1.setEnabled(false);
+					btnConsulta1_1.setEnabled(false);
+					lblConsulta1_2.setEnabled(false);
+					btnConsulta1_2.setEnabled(false);
+					txtaConsulta1.setEnabled(false);
+					
+					// panConsulta2
+					lblConsulta2_1.setEnabled(false);
+					btnConsulta2_1.setEnabled(false);
+					lblConsulta2_2.setEnabled(false);
+					btnConsulta2_2.setEnabled(false);
+					lblConsulta2_3.setEnabled(false);
+					btnConsulta2_3.setEnabled(false);
+					txtaConsulta2.setEnabled(false);
+					
+					// panConsulta3
+					lblConsulta3_1.setEnabled(false);
+					btnConsulta3_1.setEnabled(false);
+					lblConsulta3_2.setEnabled(false);
+					btnConsulta3_2.setEnabled(false);
+					txtaConsulta3.setEnabled(false);
+					
+					// panConsulta4
+					lblConsulta4_1.setEnabled(false);
+					btnConsulta4_1.setEnabled(false);
+					lblConsulta4_2.setEnabled(false);
+					btnConsulta4_2.setEnabled(false);
+					txtaConsulta4.setEnabled(false);
 				}
 				lblStatusCRUD.setText(clsMensajero.darMensaje());
 				lblStatusConsulta1.setText(clsMensajero.darMensaje());
@@ -483,7 +663,7 @@ public class frmMain extends clsMensajero{
 					PreparedStatement varStatement = varDatabase.varConnection.prepareStatement(varSql);
 					ResultSet varResultado = varStatement.executeQuery(varSql);
 					varTexto += varSql + "\n";
-					varTexto += "\nNombre\n------------------------------------------------------------------------------------------------------------------------\n";
+					varTexto += "\nDepartamento\n------------------------------------------------------------------------------------------------------------------------\n";
 					while (varResultado.next()) {
 						varTexto += varResultado.getString("DEP_NOMBRE") + "\n";
 					}
@@ -503,7 +683,7 @@ public class frmMain extends clsMensajero{
 					PreparedStatement varStatement = varDatabase.varConnection.prepareStatement(varSql);
 					ResultSet varResultado = varStatement.executeQuery(varSql);
 					varTexto += varSql + "\n";
-					varTexto += "\nCodigo\tNombre\n------------------------------------------------------------------------------------------------------------------------\n";
+					varTexto += "\nCodigo\tPais\n------------------------------------------------------------------------------------------------------------------------\n";
 					while (varResultado.next()) {
 						varTexto += varResultado.getInt("PAI_CODIGO") + "\t" + varResultado.getString("PAI_NOMBRE") + "\n";
 					}
@@ -570,6 +750,80 @@ public class frmMain extends clsMensajero{
 					txtaConsulta2.setText(varTexto);
 				} catch (SQLException e1) {
 					lblStatusConsulta2.setText("ERROR: " + e1.getMessage());
+				}
+			}
+		});
+		btnConsulta3_1.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				try {
+					lblStatusConsulta3.setText(varConexionExitosa);
+					varTexto = "";
+					txtaConsulta3.setText(varTexto);
+					String varSql = "SELECT * FROM Departamento WHERE Departamento.PAI_CODIGO = (SELECT PAI_CODIGO FROM Pais WHERE PAI_NOMBRE = 'Colombia')";
+					PreparedStatement varStatement = varDatabase.varConnection.prepareStatement(varSql);
+					ResultSet varResultado = varStatement.executeQuery(varSql);
+					varTexto += varSql + "\n";
+					varTexto += "\nCodigo\tDepartamento\n------------------------------------------------------------------------------------------------------------------------\n";
+					while (varResultado.next()) {
+						varTexto += varResultado.getString("DEP_CODIGO") + "\t" + varResultado.getString("DEP_NOMBRE") + "\n";
+					}
+					txtaConsulta3.setText(varTexto);
+				} catch (SQLException e1) {
+					lblStatusConsulta3.setText("ERROR: " + e1.getMessage());
+				}
+			}
+		});
+		btnConsulta3_2.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				try {
+					lblStatusConsulta3.setText(varConexionExitosa);
+					varTexto = "";
+					txtaConsulta3.setText(varTexto);
+					String varSql = "SELECT MUN_NOMBRE FROM Municipio WHERE Municipio.DEP_CODIGO = (SELECT DEP_CODIGO FROM Departamento WHERE DEP_NOMBRE = 'Cauca')";
+					PreparedStatement varStatement = varDatabase.varConnection.prepareStatement(varSql);
+					ResultSet varResultado = varStatement.executeQuery(varSql);
+					varTexto += varSql + "\n";
+					varTexto += "\nMunicipio\n------------------------------------------------------------------------------------------------------------------------\n";
+					while (varResultado.next()) {
+						varTexto += varResultado.getString("MUN_NOMBRE") + "\n";
+					}
+					txtaConsulta3.setText(varTexto);
+				} catch (SQLException e1) {
+					lblStatusConsulta3.setText("ERROR: " + e1.getMessage());
+				}
+			}
+		});
+		btnConsulta4_1.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				try {
+					lblStatusConsulta4.setText(varConexionExitosa);
+					varTexto = "";
+					txtaConsulta4.setText(varTexto);
+					String varSql = "ALTER TABLE Universidad ADD Direccion VARCHAR(20)";
+					PreparedStatement varStatement = varDatabase.varConnection.prepareStatement(varSql);
+					int varRowsAffected = varStatement.executeUpdate(varSql);
+					varTexto += varSql + "\n\nTabla Universidad alterada";
+					txtaConsulta4.setText(varTexto);
+					lblStatusConsulta4.setText(varRowsAffected + " rows affected");
+				} catch (SQLException e1) {
+					lblStatusConsulta4.setText("ERROR: " + e1.getMessage());
+				}
+			}
+		});
+		btnConsulta4_2.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				try {
+					lblStatusConsulta4.setText(varConexionExitosa);
+					varTexto = "";
+					txtaConsulta4.setText(varTexto);
+					String varSql = "ALTER TABLE Universidad DROP COLUMN Direccion";
+					PreparedStatement varStatement = varDatabase.varConnection.prepareStatement(varSql);
+					int varRowsAffected = varStatement.executeUpdate(varSql);
+					varTexto += varSql + "\n\nTabla Universidad alterada";
+					txtaConsulta4.setText(varTexto);
+					lblStatusConsulta4.setText(varRowsAffected + " rows affected");
+				} catch (SQLException e1) {
+					lblStatusConsulta4.setText("ERROR: " + e1.getMessage());
 				}
 			}
 		});

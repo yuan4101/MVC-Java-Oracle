@@ -1,15 +1,12 @@
-package modelo;
+package Access;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-import Access.clsMensajero;
-
 import java.sql.DriverManager;
 
-public class clsDatabase extends clsMensajero{
+public class clsConnection extends clsMensajero{
 	
 	public Connection varConnection = null;
 
